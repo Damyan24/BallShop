@@ -7,6 +7,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: beige;
 }
 
 
@@ -67,6 +68,9 @@ header {
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            background-color: rgba(255, 128, 0, 0.3);
+            border: 1px solid white;
+            padding: 50px;
         }
 
         .button {
@@ -74,11 +78,9 @@ header {
             font-size: 20px;
             background-color: rgb(255, 128, 0); 
             border-radius: 20px;
-          	border-right: 1px solid #000;
-border-left: 1px solid #000;
+          	border: 3px solid black;
             font-weight: bold;
             color: rgb(255, 255, 255); 
-            border: none;
             cursor: pointer;
         }
         
@@ -86,4 +88,20 @@ border-left: 1px solid #000;
 			color: orange;
 			background-color: black;
 			transition: 0.2s;
+			border-color: white;
+		}
+
+		
+		.text{
+			color: rgb(0, 0, 0);
+			font-size: 40px;
+			font-weight: bold;
+		}
+		
+		
+		
+		h1{
+			margin-top: 120px;
+			text-align: center;
+			font-size: 60px;
 		}
