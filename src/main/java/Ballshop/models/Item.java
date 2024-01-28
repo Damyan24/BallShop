@@ -23,6 +23,9 @@ public class Item {
 
     @Column(name = "image_identifier")
     private String imageIdentifier;
+    
+    @Column(name = "quantity")
+    private int stock;
 
     public int getId() {
         return id;
@@ -30,7 +33,25 @@ public class Item {
 
 
 
-    public String getItemName() {
+    public int getStock() {
+		return stock;
+	}
+
+
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public String getItemName() {
         return itemName;
     }
 
