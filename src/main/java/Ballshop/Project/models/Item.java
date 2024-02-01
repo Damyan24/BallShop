@@ -1,4 +1,4 @@
-package Ballshop.models;
+package Ballshop.Project.models;
 
 
 import jakarta.persistence.*;
@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 public class Item {
 
     @Id
+    @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -18,8 +19,7 @@ public class Item {
     private Double itemPrice;
 
 
-    @Column(name="user_id")
-    private int userId;
+    
 
     @Column(name = "image_identifier")
     private String imageIdentifier;
@@ -67,13 +67,7 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+  
 
     public String getImageIdentifier() {
         return imageIdentifier;

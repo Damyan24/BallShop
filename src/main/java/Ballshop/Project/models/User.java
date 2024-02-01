@@ -1,4 +1,4 @@
-package Ballshop.models;
+package Ballshop.Project.models;
 
 import jakarta.persistence.*;
 

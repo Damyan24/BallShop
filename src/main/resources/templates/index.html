@@ -51,17 +51,80 @@ shopping_basket
 			
 			<img src = "/images/drill1.jpg">
 			
-			<div class = "info">
-				
-			</div>
+	<div class="info">
+   
+   <p class="name" th:text="${items.get(0).itemName}"></p> 
+   
+   <p class="price"  th:text="'$'+${items.get(0).itemPrice}"></p>
+</div>	
 			
+			
+		</div>
+		
+
+
+
+  
+		
+		<div class = "item">
+			
+			<img src = "/images/drill2.jpg">
+			
+	<div class="info">
+   
+   <p class="name" th:text="${items.get(1).itemName}"></p> 
+   
+   <p class="price"  th:text="'$'+${items.get(1).itemPrice}"></p>
+</div>	
+			
+			
+		</div>
+		
+	
+	
+	
+	
+	
+	  
+		
+		<div class = "item">
+			
+			<img src = "/images/drill3.jpg">
+			
+	<div class="info">
+   
+   <p class="name" th:text="${items.get(2).itemName}"></p> 
+   
+   <p class="price"  th:text="'$'+${items.get(2).itemPrice}"></p>
+</div>	
+			
+			
+		</div>
+		
+	
+	
+	
+	
+	
+	
+	
+	  
+		
+		<div class = "item">
+			
+			<img src = "/images/drill4.jpg">
+			
+	<div class="info">
+   
+   <p class="name" th:text="${items.get(3).itemName}"></p> 
+   
+   <p class="price"  th:text="'$'+${items.get(3).itemPrice}"></p>
+</div>	
 			
 			
 		</div>
 		
 	</div>
-
-
 
 
 

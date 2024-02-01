@@ -7,7 +7,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
 }
 
 
@@ -104,4 +104,49 @@ header {
 			margin-top: 120px;
 			text-align: center;
 			font-size: 60px;
+		}
+		
+		
+		
+		.products{
+			width: 100%;
+			padding: 5%;
+			height: 700px;
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
+			
+		}
+		
+		
+		.item{
+			display: flex;
+			width: 300px;
+			flex-direction: column;
+			height: 400px;
+			border: 1px solid black;
+			box-shadow: 5px 5px 5px  rgb(0, 0, 0);
+		}
+		
+		.info{
+			height: 25%;
+			padding: 10px;
+			background-color:rgb(192, 192, 192,0.4);
+		}
+		
+		
+		
+		.item img{
+			width: 100%;
+		}
+		
+		
+		.name{
+			font-weight: bold;
+			font-size: 20px;
+		}
+		
+		.price{
+			font-weight: bold;
+			font-size: 20px;
 		}

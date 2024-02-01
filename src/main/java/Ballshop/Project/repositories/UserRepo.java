@@ -1,8 +1,8 @@
-package Ballshop.repositories;
+package Ballshop.Project.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import Ballshop.models.User;
+import Ballshop.Project.models.User;
 
 public interface UserRepo extends JpaRepository<User,Integer> {
 
