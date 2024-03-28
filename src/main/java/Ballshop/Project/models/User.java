@@ -1,5 +1,8 @@
 package Ballshop.Project.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,17 +13,14 @@ public class User {
         @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
 
-        @Column(name = "firstName")
-        private String firstName;
+        @Column(name = "session_id")
+        private String  sessionId;
+        
+        
+        @OneToMany(mappedBy = "user")
+        private List<BasketItem> basket;
 
-    @Column(name = "lastName")
-    private String lastName;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name ="password")
-    private String password;
+  
 
     public int getId() {
         return id;
@@ -28,35 +28,33 @@ public class User {
 
 
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getSessionId() {
+		return sessionId;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public List<BasketItem> getBasket() {
+		 if (this.basket == null) {
+		        this.basket = new ArrayList<>();
+		    }
+		    return this.basket;
+	}
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public String getPassword() {
-        return password;
-    }
+	public void setBasket(List<BasketItem> basket) {
+		this.basket = basket;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+
+	
+	
+
+   
 }

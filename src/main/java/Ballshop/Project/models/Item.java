@@ -24,24 +24,15 @@ public class Item {
     @Column(name = "image_identifier")
     private String imageIdentifier;
     
-    @Column(name = "quantity")
-    private int stock;
-
+   
     public int getId() {
         return id;
     }
 
 
 
-    public int getStock() {
-		return stock;
-	}
 
 
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
 
 
 

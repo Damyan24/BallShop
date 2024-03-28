@@ -5,7 +5,7 @@
     <title>Main page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap">
 	<script src="https://kit.fontawesome.com/67939a765b.js" crossorigin="anonymous"></script>
-
+	<script src="myscripts.js"></script>
 
   		<link rel="stylesheet" type="text/css" href="/css/index.css">
 
@@ -29,9 +29,17 @@ tools_power_drill
 
 
     <div class = "right">
-        <span class="material-symbols-outlined">
+		
+	
+		
+        <a href="/basket"><span class="material-symbols-outlined">
 shopping_basket
 </span>
+</a>
+
+<p class="itemCount" th:text="${user.getBasket().size()}"></p>
+
+
     </div>
 </header>
 
@@ -62,7 +70,7 @@ shopping_basket
 			<img src = "/images/drill1.jpg">
 			
 			<div class = "buttons">
-				<button>
+				<button class="add-to-basket" data-item-id="0">
 					<i class="fa-solid fa-plus"></i>
 				</button>
 
@@ -92,7 +100,7 @@ shopping_basket
 			<img src = "/images/drill2.jpg">
 			
 			<div class = "buttons">
-				<button>
+				<button class="add-to-basket" data-item-id="1">
 					<i class="fa-solid fa-plus"></i>
 				</button>
 
@@ -121,7 +129,7 @@ shopping_basket
 			<img src = "/images/drill3.jpg">
 			
 			<div class = "buttons">
-				<button>
+				<button class="add-to-basket" data-item-id="2">
 					<i class="fa-solid fa-plus"></i>
 				</button>
 
@@ -149,7 +157,7 @@ shopping_basket
 			<img src = "/images/drill4.jpg">
 			
 			<div class = "buttons">
-				<button>
+				<button class="add-to-basket" data-item-id="3">
 					<i class="fa-solid fa-plus"></i>
 				</button>
 

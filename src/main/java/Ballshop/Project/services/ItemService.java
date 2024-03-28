@@ -16,21 +16,7 @@ public class ItemService {
 	@Autowired
 	private ItemRepo itemrepo;
 	
-	@Transactional
-	  public void updateStock(int itemId, int numberOfItems) {
-	      
-		  Optional<Item> opt = itemrepo.findById(itemId);
-		  
-		  Item item = opt.get();
-		  
-		  
-		  
-		  if(item.getStock() >= numberOfItems) {
-			  itemrepo.updateStock(itemId, numberOfItems);
-		  }
-		  
-	}
-		  
+	  
 		  
 		  public Optional<Item> findById(int ItemId) {
 			  
