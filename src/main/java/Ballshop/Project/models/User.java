@@ -17,8 +17,7 @@ public class User {
         private String  sessionId;
         
         
-        @OneToMany(mappedBy = "user")
-        private List<BasketItem> basket;
+        
 
   
 
@@ -34,26 +33,17 @@ public class User {
 
 
 
-	public List<BasketItem> getBasket() {
-		 if (this.basket == null) {
-		        this.basket = new ArrayList<>();
-		    }
-		    return this.basket;
-	}
 
 
 
-	public void setBasket(List<BasketItem> basket) {
-		this.basket = basket;
-	}
 
+	
 
 
 	public void setSessionId(String sessionId) {
 		this.sessionId = sessionId;
 	}
 
-	
 	
 
    

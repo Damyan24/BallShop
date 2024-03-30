@@ -19,36 +19,49 @@ public class BasketItem {
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private int id;
 
-	    @ManyToOne
-	    @JoinColumn(name = "user_id")
-	    private User user;
+	    
+	    @Column(name = "user_id")
+	    private String user_id;
 
-	    @ManyToOne
-	    @JoinColumn(name = "item_id")
-	    private Item item;
+	    
+	    @Column(name = "item_id")
+	    private int item_id;
+
+
+		public int getId() {
+			return id;
+		}
+
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+
+		public String getUser_id() {
+			return user_id;
+		}
+
+
+		public void setUser_id(String user_id) {
+			this.user_id = user_id;
+		}
+
+
+		public int getItem_id() {
+			return item_id;
+		}
+
+
+		public void setItem_id(int item_id) {
+			this.item_id = item_id;
+		}
 	    
 	    
 	   
 
 
-		public User getUser() {
-			return user;
-		}
-
-
-		public void setUser(User user) {
-			this.user = user;
-		}
-
-
-		public Item getItem() {
-			return item;
-		}
-
-
-		public void setItem(Item item) {
-			this.item = item;
-		}
+		
 
 
 		

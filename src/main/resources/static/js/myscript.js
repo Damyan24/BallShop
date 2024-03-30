@@ -4,7 +4,31 @@ const buttons = document.querySelectorAll('.add-to-basket');
 buttons.forEach(button => {
     button.addEventListener('click', function() {
         // Retrieve the ID of the clicked button
-        const buttonId = this.id;
+        const itemId = this.id;
         
+        // Fetch the user ID
+        fetch("/cart/getUserId")
+            .then(response => response.text())
+            .then(userId => {
+                console.log(itemId);
+                console.log(userId);
+                
+                // Create the request object
+               request = {
+				   "userId" : userId,
+				   "itemId" : itemId
+			   }
+                
+                // Send the request to add the item to the cart
+                fetch("/cart/addItem", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(request)
+                })
+                .then(response => response.text())
+                .then(result => console.log(result)); // Log the result from the server
+            });
     });
 });

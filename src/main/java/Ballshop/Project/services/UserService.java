@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import Ballshop.Project.models.User;
 import Ballshop.Project.repositories.UserRepo;
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -17,7 +18,7 @@ public class UserService {
 		
 		return userRepo.findBySessionId(sessionId);	
 		}
-	
+	@Transactional
 	public void saveUser(User user) {
 		userRepo.save(user);
 	}

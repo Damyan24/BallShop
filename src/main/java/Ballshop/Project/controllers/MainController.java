@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Ballshop.Project.models.BasketItem;
 import Ballshop.Project.models.Item;
 import Ballshop.Project.models.User;
+import Ballshop.Project.services.BasketItemService;
 import Ballshop.Project.services.ItemService;
 import Ballshop.Project.services.UserService;
 import jakarta.servlet.http.Cookie;
@@ -29,6 +30,8 @@ public class MainController {
     ItemService itemService;
     @Autowired
     UserService userService;
+    @Autowired
+    BasketItemService BIS;
     
     final static Logger logger = LoggerFactory.getLogger(MainController.class);
     
@@ -55,14 +58,14 @@ public class MainController {
 
         if (!cookieExists) {
         	User user = new User();
-            user.setSessionId(session.getId());
-            user.setBasket(new ArrayList<BasketItem>());
+        	String session_id = session.getId();
+            user.setSessionId(session_id);
             userService.saveUser(user);
             Cookie newCookie = new Cookie("session_id", user.getSessionId());
             newCookie.setMaxAge(7*24*60*60);
             newCookie.setPath("/"); 
             response.addCookie(newCookie);
-            
+            model.addAttribute("itemCount",BIS.findAllByUserId(session_id));
             model.addAttribute("user",user);
         }
 
