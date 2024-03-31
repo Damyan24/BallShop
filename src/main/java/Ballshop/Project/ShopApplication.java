@@ -16,9 +16,6 @@ public class ShopApplication {
 		
 		  
 
-		   logger.info("this is a info message");
-		      logger.warn("this is a warn message");
-		      logger.error("this is a error message");
 		
 		SpringApplication.run(ShopApplication.class, args);
 	}

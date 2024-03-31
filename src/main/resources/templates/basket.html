@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap">
+	<script src="https://kit.fontawesome.com/67939a765b.js" crossorigin="anonymous"></script>
+	
+
+
+
+  		<link rel="stylesheet" type="text/css" href="/css/index.css">
+  		<link rel="stylesheet" type="text/css" href="/css/basket.css">
+
+</head>
+<body>
+
+<header>
+    <div class = "left">
+           <a href="/">
+			   <span class="material-symbols-outlined">
+tools_power_drill
+</span>
+        
+           </a>
+    </div>
+    
+
+  
+</header>
+
+
+
+
+<div class = "main">
+	
+	<h1>Items in Basket</h1>
+    <ul th:if="${not #lists.isEmpty(itemList)}">
+        
+        <li th:each="item : ${itemList}">
+            
+            <div>
+                <img th:src="'/images/drill' + ${item.imageIdentifier}+'.jpg'" alt="Item Image" width="100" height="100">
+                <span th:text="${item.itemName}"></span> - <span th:text="${item.itemPrice}"></span>
+            </div>
+        </li>
+    </ul>
+    
+   
+</div>
+
+
+	<footer>
+		   
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+
+      <p>Copyright © 2024 - DrillShop</p>
+    </footer>
+	
+	
+	
+	
+	
+	  
+		
+		
+		
+
+
+
+</body>
+</html>

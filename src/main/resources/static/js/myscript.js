@@ -28,7 +28,16 @@ buttons.forEach(button => {
                     body: JSON.stringify(request)
                 })
                 .then(response => response.text())
-                .then(result => console.log(result)); // Log the result from the server
+                .then(result => {
+					if (result == "failure"){
+						alert("Item is already in the basket!")
+					}else{
+						let itemCount = document.querySelector(".itemCount");
+						itemCount.innerHTML = parseInt(itemCount.innerHTML) + 1;
+						
+						
+	}
+				});
             });
     });
 });

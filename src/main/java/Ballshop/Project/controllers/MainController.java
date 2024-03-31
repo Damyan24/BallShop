@@ -50,6 +50,8 @@ public class MainController {
                 if (cookie.getName().equals("session_id")) {
                     cookieExists = true;
                     User existingUser = userService.findBySession(cookie.getValue());
+                    int itemCount = BIS.findAllByUserId(existingUser.getSessionId()).size();
+                    model.addAttribute("itemCount",itemCount);
                     model.addAttribute("user", existingUser);
                     break;
                 }
@@ -65,10 +67,57 @@ public class MainController {
             newCookie.setMaxAge(7*24*60*60);
             newCookie.setPath("/"); 
             response.addCookie(newCookie);
-            model.addAttribute("itemCount",BIS.findAllByUserId(session_id));
+            model.addAttribute("itemCount",0);
+            logger.warn("The size of the item array is " + BIS.findAllByUserId(session_id).size());
             model.addAttribute("user",user);
         }
 
         return "index";
     }
+    
+    
+    
+    
+    @GetMapping("/basket")
+    public String basket(Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response){
+    	
+    	for (Cookie c : request.getCookies()) {
+    	    if (c.getName().equals("session_id")) {
+    	        User user = userService.findBySession(c.getValue());
+    	        List<BasketItem> bi = BIS.findAllByUserId(user.getSessionId());
+    	        List<Item> items = new ArrayList<>();
+    	        for (BasketItem b : bi) {
+    	            Item item = itemService.findById(b.getItem_id());
+    	            if (item != null) {
+    	                items.add(item);
+    	            }
+    	        }
+    	        model.addAttribute("user", user);
+    	        if (!items.isEmpty()) {
+    	            model.addAttribute("itemList", items);
+    	        } else {
+    	            model.addAttribute("emptyBasket", true);
+    	        }
+    	    }
+    	}
+    	return "basket";
+
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
