@@ -51,7 +51,17 @@ public class MainController {
                     cookieExists = true;
                     User existingUser = userService.findBySession(cookie.getValue());
                     int itemCount = BIS.findAllByUserId(existingUser.getSessionId()).size();
-                    model.addAttribute("itemCount",itemCount);
+                    List<BasketItem> bi = BIS.findAllByUserId(existingUser.getSessionId());
+                    List<Item> items2 = new ArrayList<>();
+                   
+                    if(bi != null) {
+                    	for(BasketItem b : bi) {
+                    		items2.add(itemService.findById(b.getItem_id()));
+                    	}
+                    }
+                    
+                    
+                    		model.addAttribute("itemCount",items2);
                     model.addAttribute("user", existingUser);
                     break;
                 }
@@ -63,11 +73,12 @@ public class MainController {
         	String session_id = session.getId();
             user.setSessionId(session_id);
             userService.saveUser(user);
+            List<Item> items1 = new ArrayList<>();
             Cookie newCookie = new Cookie("session_id", user.getSessionId());
             newCookie.setMaxAge(7*24*60*60);
             newCookie.setPath("/"); 
             response.addCookie(newCookie);
-            model.addAttribute("itemCount",0);
+            model.addAttribute("itemCount",items1);
             logger.warn("The size of the item array is " + BIS.findAllByUserId(session_id).size());
             model.addAttribute("user",user);
         }
@@ -80,40 +91,26 @@ public class MainController {
     
     @GetMapping("/basket")
     public String basket(Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response){
-    	
-    	for (Cookie c : request.getCookies()) {
-    	    if (c.getName().equals("session_id")) {
-    	        User user = userService.findBySession(c.getValue());
-    	        List<BasketItem> bi = BIS.findAllByUserId(user.getSessionId());
-    	        List<Item> items = new ArrayList<>();
-    	        for (BasketItem b : bi) {
-    	            Item item = itemService.findById(b.getItem_id());
-    	            if (item != null) {
-    	                items.add(item);
-    	            }
-    	        }
-    	        model.addAttribute("user", user);
-    	        if (!items.isEmpty()) {
-    	            model.addAttribute("itemList", items);
-    	        } else {
-    	            model.addAttribute("emptyBasket", true);
-    	        }
-    	    }
+    	 User user = null;
+    	for(Cookie c : request.getCookies()) {
+    		if(c.getName().equals("session_id")) {
+    			user = userService.findBySession(c.getValue());
+    			List <BasketItem> bi =BIS.findAllByUserId(user.getSessionId());
+    			List<Item> items = new ArrayList<>();
+    			for(BasketItem b : bi) {
+    				Item item = itemService.findById(b.getItem_id());
+    				items.add(item);
+    			}
+    			model.addAttribute("itemList",items);
+    			model.addAttribute("user", user);
+    		}
     	}
     	return "basket";
+    		 
+    	 
+    	 
 
-    	
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+}
     
     
     
@@ -121,3 +118,21 @@ public class MainController {
     
     
 }
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+

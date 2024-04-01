@@ -32,23 +32,21 @@ tools_power_drill
 
 
 
-<div class = "main">
-	
-	<h1>Items in Basket</h1>
+<div class="main">
+    <h1>Items in Basket</h1>
     <ul th:if="${not #lists.isEmpty(itemList)}">
         
         <li th:each="item : ${itemList}">
             
-            <div>
-                <img th:src="'/images/drill' + ${item.imageIdentifier}+'.jpg'" alt="Item Image" width="100" height="100">
-                <span th:text="${item.itemName}"></span> - <span th:text="${item.itemPrice}"></span>
+            <div class = "row">
+              <p th:text = "${item.getItemId()}"}></p>
             </div>
         </li>
     </ul>
-    
+   
+   
    
 </div>
-
 
 	<footer>
 		   
