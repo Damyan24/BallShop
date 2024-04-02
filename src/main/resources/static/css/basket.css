@@ -1,7 +1,6 @@
 .main{
-	width: 70%;
-	margin: 15%;
-	margin-top:10%;
+	width: 90%;
+	margin: 5%;
 	border: 1px solid black ;
 	
 	
@@ -16,11 +15,19 @@ main h1{
 .main img{
 	width: 100px;
 	height: 100px;
+	position: relative;
+	top: 30px;
 	opacity: 1;
+}
+
+ul{
+	list-style-type: none;
 }
 
 
 .main .row{
+	margin-top: 30px;
+	margin-bottom: 30px;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -35,11 +42,123 @@ main h1{
 
 .price{
 	top: 75px;
-	right: 300px;
+	right: 115px;
 }
 
+.quantity{
+	display: flex;
+	position: relative;
+	top: 70px;
+	right: 200px;
+
+}
+
+.quantity button{
+	font-size: 20px;
+	font-weight: bold;
+	height: 30px;
+	width: 30px;
+	color: white;
+}
+
+.quantity button p{
+	position: relative;
+	bottom: 20px;
+	left: 0px;
+}
+
+.plus{
+	background-color: green;
+	position: relative;
+	left: 50px;
+}
+
+.plus:hover{
+	background-color: white;
+	color: green;
+}
+
+.minus:hover{
+	background-color: white;
+	color: red;
+}
+
+.quantity p{
+	position: relative;
+	bottom: 57px;
+	right: 28px;
+}
+
+.minus{
+	background-color: red;
+}
 
 li{
 	border-bottom: 1px solid black;
 	margin-bottom: 30px;
+}
+
+.number{
+	font-size: 35px;
+	font-weight: bold;
+	position: relative;
+	left: 25px;
+	top: -40px;
+}
+
+.finalPrice{
+	font-size: 35px;
+	font-weight: bold;
+	position: relative;
+	right: 150px;
+	top: 35px;
+}
+
+.remove {
+	height: 30px;
+	position: relative;
+	right: 100px;
+	top: 69px;
+	color:white;
+	background-color: red;
+	font-size: 20px;
+}
+
+.remove:hover{
+	background-color: white;
+	color: red;
+}
+
+
+.final{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.final button{
+	width: 150px;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: green;
+	color: white;
+	border-radius: 20px;
+	border-color: 1px solid white;
+	position: relative;
+	bottom: 60px;
+}
+
+.final button:hover{
+	color: green;
+	background-color: white;
+	border-color: green;
+}
+
+.final p {
+	font-size: 35px;
+	font-weight: bold;
+	position: relative;
+	left: 600px;
+	bottom: 100px;
+	border-bottom: 3px solid black;
 }

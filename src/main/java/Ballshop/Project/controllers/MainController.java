@@ -97,10 +97,14 @@ public class MainController {
     			user = userService.findBySession(c.getValue());
     			List <BasketItem> bi =BIS.findAllByUserId(user.getSessionId());
     			List<Item> items = new ArrayList<>();
+    			float totalSum = 0;
     			for(BasketItem b : bi) {
     				Item item = itemService.findById(b.getItem_id());
     				items.add(item);
+    				totalSum += item.getItemPrice() ;
     			}
+    			String formattedNumber = String.format("%.2f", totalSum);
+    			model.addAttribute("totalSum",formattedNumber);
     			model.addAttribute("itemList",items);
     			model.addAttribute("user", user);
     		}
@@ -109,11 +113,12 @@ public class MainController {
     		 
     	 
     	 
+   
 
 }
     
-    
-    
+  
+   
     
     
     

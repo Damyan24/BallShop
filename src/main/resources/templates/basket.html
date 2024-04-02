@@ -31,22 +31,45 @@ tools_power_drill
 
 
 
-
+<h1>Items in Basket</h1>
 <div class="main">
-    <h1>Items in Basket</h1>
+    
     <ul th:if="${not #lists.isEmpty(itemList)}">
         
-        <li th:each="item : ${itemList}">
-            
-            <div class = "row">
-              <p th:text = "${item.getItemId()}"}></p>
+        <li class = "li" th:each="item : ${itemList}" th:id = "${item.id}">
+            <div   class="row">
+                <img th:src="@{'/images/drill' + ${item.imageIdentifier} + '.jpg'}">
+                <span th:text="${item.itemName}"></span>  <span th:id = "${item.id}" class="price" th:text="${item.itemPrice}"></span>
+                
+                <div class = "quantity" >
+					<button th:id = "${item.id}" class = "minus"><p class = "mn">-</p></button>
+					 <p th:id = "${item.id}" class = "number">1</p>
+					<button th:id = "${item.id}" class = "plus"><p class = "pl">+</div></button>
+					
+					<div class = "finalPrice">
+					<p class = "totalItem" th:text = "${item.itemPrice}" th:id = "${item.id}"></p>
+				</div>
+					<button  th:id = "${item.id}"  class = "remove"><i class="fa-solid fa-trash"></i></button>
+				</div>
+				
+				
+              		
+                
             </div>
         </li>
+    </ul>
     </ul>
    
    
    
 </div>
+
+
+	<div class = "final">
+		<button class = "purchase">Purchase</button>
+		
+		<p th:text="'$' + ${totalSum}" class = "total"></p>
+	</div>
 
 	<footer>
 		   
@@ -69,7 +92,7 @@ tools_power_drill
 		
 		
 
-
+<script src="js/basket.js"></script>
 
 </body>
 </html>

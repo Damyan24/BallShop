@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Ballshop.Project.CartItemDTO;
@@ -66,11 +67,58 @@ public class CartController {
 	    }
 	    
 	    return "failure";
-	    
-
+	   
 	  
 	}
-
 	
+	
+	
+    @GetMapping("/removeItem")
+    public String removeItem(@RequestParam(name = "itemId") String item_id,HttpServletRequest request) {
+    	
+    	if(item_id == null) {
+    		return "failure";
+    	}
+    	
+    	Cookie[] cookies = request.getCookies();
+		
+		Cookie sessionCookie = null;
+		
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("session_id"))
+				sessionCookie = cookie;
+		}
+		
+		String user_id = sessionCookie.getValue();
+		
+		BasketItem item = BIS.findBasketItem(user_id,  Integer.parseInt(item_id));
+    	
+    	BIS.deleteItem(item);
+    	
+    	return "success";
+    	
+    }
+    
+    
+    
+    
+   
+
+    @GetMapping("/finalize")
+    public String basket(HttpServletRequest request) {
+    	
+    	for(Cookie c : request.getCookies()) {
+    		if(c.getName().equals("session_id")) {
+    			String userId = c.getValue();
+    			
+    			BIS.deleteAll(userId);
+    			return "success";
+    		}
+    	}
+    	
+    	return "failure";
+    
+    
+}
 	
 }

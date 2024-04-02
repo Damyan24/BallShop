@@ -1,25 +1,32 @@
 const buttons = document.querySelectorAll('.add-to-basket');
 
-// Loop through each button and attach an event listener
+const seeMore = document.querySelector(".button");
+
+seeMore.addEventListener("click", function() {
+    scrollBy(0, 1000);
+});
+
+
+
 buttons.forEach(button => {
     button.addEventListener('click', function() {
-        // Retrieve the ID of the clicked button
+        
         const itemId = this.id;
         
-        // Fetch the user ID
+      
         fetch("/cart/getUserId")
             .then(response => response.text())
             .then(userId => {
                 console.log(itemId);
                 console.log(userId);
                 
-                // Create the request object
+               
                request = {
 				   "userId" : userId,
 				   "itemId" : itemId
 			   }
                 
-                // Send the request to add the item to the cart
+                
                 fetch("/cart/addItem", {
                     method: "POST",
                     headers: {

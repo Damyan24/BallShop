@@ -45,5 +45,20 @@ public class BasketItemService {
 	}
 	
 	
+	@Transactional
+	public void deleteItem(BasketItem item) {
+		basketitemrepo.delete(item);
+	}
+	
+	@Transactional
+	public void deleteAll(String userId) {
+	
+		List<BasketItem> items = basketitemrepo.findAllByUserId(userId);
+		
+		for(BasketItem b : items) {
+			basketitemrepo.delete(b);
+		}
+	
 
+}
 }
